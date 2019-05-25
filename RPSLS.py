@@ -1,5 +1,6 @@
 #so rock paper sissors lizard spock, what is needed 
 import random
+import time
 
 ### a list that holds the types 
 choices = ['scissors', 'rock', 'paper', 'lizard', 'spock']
@@ -70,16 +71,15 @@ print(" ")
 
 #wrap it in a while loop to go for 100 times 
 i = 0
-while i < 100:
+while i == 0:
 
-    print("Please choose an input:")
-    player_choice = input()
+    player_choice = input("Please choose an input:")
 
     ## player input, include validation caps + an actual thing 
     if validation(player_choice) == True:
         #all is well and it is a valid play, so keep her lit as it were, 
         # move on to generate the computer move 
-        comp_choice = choices[random.randint(0,5)]
+        comp_choice = choices[random.randint(0,4)]
         print(comp_choice)
 
         ##now compare the two moves 
@@ -88,25 +88,31 @@ while i < 100:
         if val == True:
             #player has won
             print("Player has won!!")
+            time.sleep(1)
             print("Congratulations, you have beaten me ")
+            
         
         val = comp(comp_choice,player_choice)
         if val == True:
             #comp has won 
             print("The computer has won!")
+            time.sleep(1)
             print("Seems like Ive won, again")
-        else:
+        elif comp_choice == player_choice:
             #must have chosen the same things 
             print("Draw!")
             print("")
+            time.sleep(1)
             print("Well, Great minds do think alike ")
 
     print("Would you like to play again?")
-    print("y = yes, n = no")
-    player_choice = input()
+    
+    player_choice = input("y = yes, n = no: ")
 
     #validate the input
-    if player_choice.lower is not 'y' or 'n':
-        print("Ill take that as a yes then") 
-    elif(player_choice.lower == 'n'):
+    print(player_choice)  
+    if (player_choice == "n"):
         i = 1
+        print(i)
+    else:
+        print("Ill take that as a yes!")
